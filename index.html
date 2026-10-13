@@ -1,0 +1,3680 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boda Cosme & Katherine</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@200;400;600&family=Tenor+Sans&family=Alex+Brush&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- PANTALLA DE CARGA (PRELOADER) --- */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 999999;
+            transition: .8s;
+        }
+
+        #preloader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .cover-logo {
+            width: 275px;
+            height: 275px;
+            position: relative;
+        }
+
+        .circle {
+            position: absolute;
+            inset: 20px;
+            border: 1px solid rgba(0, 0, 0, .25);
+            border-radius: 50%;
+        }
+
+        .letter-s {
+            position: absolute;
+            top: 30px;
+            left: 50px;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 100px;
+        }
+
+        .letter-a {
+            position: absolute;
+            bottom: 30px;
+            right: 50px;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 100px;
+        }
+
+        .ampersand {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Great Vibes', cursive;
+            font-size: 70px;
+        }
+
+        .name-top {
+            position: absolute;
+            top: 60px;
+            right: 50px;
+            font-size: 12px;
+            letter-spacing: 3px;
+        }
+
+        .name-bottom {
+            position: absolute;
+            bottom: 60px;
+            left: 50px;
+            font-size: 12px;
+            letter-spacing: 3px;
+        }
+
+        .btn-portada {
+            margin-top: 35px;
+            background: #b29d84;
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 30px;
+            cursor: pointer;
+            letter-spacing: 2px;
+        }
+
+        .loader-names {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.7rem;
+            color: #0b0a08;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        .loader-line {
+            width: 40px;
+            height: 1px;
+            background-color: #8d7a64;
+            margin-top: 15px;
+            animation: lineExpand 1.5s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(0.98);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes lineExpand {
+
+            0%,
+            100% {
+                width: 0;
+                opacity: 0;
+            }
+
+            50% {
+                width: 60px;
+                opacity: 0.5;
+            }
+        }
+
+        /* ESTILOS BASE */
+        body {
+            margin: 0;
+            background-image: url("fondo6.png");
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #5d4936;
+            padding-bottom: 20px;
+            overflow-x: hidden;
+            width: 100%;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            display: block;
+            height: auto;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            image-rendering: -webkit-optimize-contrast;
+            transform: translateZ(0);
+        }
+
+        /* --- ANIMACIONES --- */
+        @keyframes fadeInCursive {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes revealNames {
+            0% {
+                opacity: 0;
+                letter-spacing: 10px;
+                filter: blur(10px);
+                transform: scale(0.95);
+            }
+
+            100% {
+                opacity: 1;
+                letter-spacing: -1px;
+                filter: blur(0);
+                transform: scale(1);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- SECCIÓN 1: CABECERA --- */
+        /* --- SECCIÓN 1: CABECERA (ACTUALIZADA CON FOTO DE FONDO) --- */
+        /* --- SECCIÓN 1: CABECERA OPTIMIZADA CON PROPORCIÓN DE IMAGEN --- */
+        /* --- SECCIÓN 1: CABECERA --- */
+        .header-section {
+            text-align: center;
+            padding: 60px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            background-image: url('fondo100.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 40vh;
+            justify-content: center;
+        }
+
+        .header-section img {
+            width: 100%;
+            height: 100%;
+            /* Esta es la clave para que la imagen se vea completa */
+            object-fit: contain;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* 'contain' asegura que la foto se enmarque completa. 
+       Si prefieres que rellene sin perder la proporción usa 'cover' combinada con el aspect-ratio */
+            object-fit: cover;
+            object-position: center 30%;
+            /* Centra verticalmente el enfoque en los rostros */
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            /* HE BORRADO LA LÍNEA DEL BACKGROUND AQUÍ */
+        }
+
+        /* Cambiamos el color de los textos a blanco para que contrasten con la foto de fondo, similar a tu referencia */
+        .cursive {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            margin: 0;
+            font-weight: normal;
+            color: #ffffff;
+            /* Blanco */
+            animation: fadeInCursive 1.5s ease-out forwards;
+            opacity: 0;
+            text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+            /* Sombra suave para mejorar lectura */
+        }
+
+        .nombres-tit {
+            font-family: 'Bodoni Moda', serif;
+            /* Tamaño ultra-microscópico */
+            font-size: clamp(0.2rem, 0.7vw, 0.25rem);
+            margin: 3px 0 0 0;
+            /* Margen mínimo para que no quede flotando */
+            font-weight: 20;
+            color: #8d7a64;
+            position: relative;
+            animation: revealNames 2.5s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+            line-height: 1;
+            text-shadow: none;
+            /* Sin sombra para mantener la nitidez en tamaño mini */
+        }
+
+        /* Ajustamos el botón de música para que sea visible sobre la foto */
+        .play-button {
+            width: 45px;
+            height: 45px;
+            border: 1.5px solid #ffffff;
+            /* Blanco */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.15);
+            /* Fondo sutil */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .play-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 10px solid #ffffff;
+            /* Blanco */
+            margin-left: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .music-playing .play-button::after {
+            content: '';
+            width: 10px;
+            height: 12px;
+            border-left: 3px solid #ffffff;
+            /* Blanco */
+            border-right: 3px solid #ffffff;
+            /* Blanco */
+            border-top: 0;
+            border-bottom: 0;
+            margin-left: 0;
+        }
+
+        /* Ajuste responsivo para celulares: controlamos la altura de la foto principal */
+        @media (max-width: 480px) {
+            .header-section {
+                min-height: 60vh;
+                /* Altura ideal para la cabecera en móviles */
+            }
+        }
+
+
+        .play-button {
+            width: 45px;
+            height: 45px;
+            border: 1.5px solid #5d4936;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .play-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 10px solid #5d4936;
+            margin-left: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .music-playing .play-button::after {
+            content: '';
+            width: 10px;
+            height: 12px;
+            border-left: 3px solid #5d4936;
+            border-right: 3px solid #5d4936;
+            border-top: 0;
+            border-bottom: 0;
+            margin-left: 0;
+        }
+
+        .cursive {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2rem, 8vw, 3rem);
+            margin: 0;
+            font-weight: normal;
+            color: #8d7a64;
+            animation: fadeInCursive 1.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .nombres-tit {
+            font-family: 'Bodoni Moda', serif;
+            font-size: clamp(2.5rem, 12vw, 4.2rem);
+            margin: 5px 0 0 0;
+            font-weight: 400;
+            position: relative;
+            animation: revealNames 2.5s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+            line-height: 1.1;
+        }
+
+        /* --- SECCIÓN 2: ESCENA DEL SOBRE (CORREGIDA) --- */
+        .escena-invitacion {
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 40px 0;
+            display: flex;
+            justify-content: center;
+            background-image: url('fondo100.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .sobre-container {
+            position: relative;
+            width: 90%;
+            max-width: 520px;
+            aspect-ratio: 1 / 1.1;
+        }
+
+        .iniciales-dd {
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            font-family: 'Bodoni Moda', serif;
+            font-size: clamp(3.5rem, 15vw, 5.5rem);
+            color: #000000;
+            opacity: 0.6;
+            letter-spacing: -8px;
+            font-weight: 300;
+            pointer-events: none;
+            text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.4), 1px 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .sobre-img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+        }
+
+        .sello-lacre {
+            position: absolute;
+            width: clamp(70px, 18vw, 100px);
+            z-index: 4;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3));
+        }
+
+        .tarjeta-blanca {
+            background-image: linear-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0.4)), url('fondo1.png');
+            background-size: cover;
+            background-position: center;
+            width: 80%;
+            left: 15%;
+            position: absolute;
+            top: 42%;
+            padding: 30px 20px;
+            /* Padding reducido para evitar desborde */
+            text-align: center;
+            z-index: 2;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tarjeta-blanca .lema {
+            font-size: 0.5rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #2b1d0d;
+        }
+
+        .tarjeta-blanca .nombre-tarjeta {
+            font-family: 'Bodoni Moda', serif;
+            font-size: clamp(1.8rem, 8vw, 3rem);
+            margin: 3px 0;
+            color: #2b1d0d;
+            text-transform: none;
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        .tarjeta-blanca .honor {
+            font-size: 0.5rem;
+            margin: 8px 0;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #2b1d0d;
+            line-height: 1.4;
+        }
+
+        .fecha-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .num-grande {
+            font-family: 'Tenor Sans', sans-serif;
+            font-size: clamp(2.5rem, 10vw, 3.5rem);
+            color: #2b1d0d;
+            line-height: 1;
+        }
+
+        .mes-dia {
+            font-size: 0.65rem;
+            letter-spacing: 1.5px;
+            color: #2b1d0d;
+            border-top: 1px solid #a69683;
+            border-bottom: 1px solid #a69683;
+            padding: 3px 0;
+            min-width: 60px;
+        }
+
+        .year {
+            letter-spacing: 6px;
+            font-size: 1rem;
+            margin-top: 10px;
+            color: #2b1d0d;
+        }
+
+
+        /* Contenedor principal */
+        .seccion-itinerario {
+            width: 100%;
+            padding: 60px 10px;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .itinerario-titulo {
+            font-family: 'Alex Brush', cursive;
+            font-size: 2.5rem;
+            color: #8d7a64;
+            margin-bottom: 40px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 600px;
+            margin: 40px auto;
+        }
+
+        /* La línea central */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background-color: #a8a08a;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        /* El punto en la línea */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 12px;
+            height: 12px;
+            background-color: #a8a08a;
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-icon {
+            width: 45%;
+        }
+
+        .timeline-icon img {
+            width: 60px;
+            height: 60px;
+            display: block;
+            object-fit: contain;
+        }
+
+        .timeline-content {
+            width: 45%;
+        }
+
+        /* Lógica para que se vean alternados */
+        /* Ítems impares: Icono a la izquierda, texto a la derecha */
+        .timeline-item:nth-child(odd) .timeline-icon {
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: left;
+        }
+
+        /* Ítems pares: Texto a la izquierda, icono a la derecha */
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-item:nth-child(even) .timeline-icon {
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            text-align: right;
+        }
+
+        /* Estilos de texto */
+        .timeline-desc {
+            font-weight: bold;
+            font-family: serif;
+            margin: 0;
+        }
+
+        .timeline-time {
+            font-family: sans-serif;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .seccion-regalos {
+            width: 100%;
+            background-image: url('fondo3.png');
+            background-size: cover;
+            padding: 40px 20px 80px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tarjeta-regalo-cafe {
+            background-color: #ffffff;
+            background-image: url('fondo1001.png');
+            background-size: cover;
+            width: 100%;
+            max-width: 400px;
+            padding: 30px 20px 60px;
+            border-radius: 25px;
+            text-align: center;
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .regalo-cursive-top {
+            font-family: 'Alex Brush', cursive;
+            font-size: 2.2rem;
+            color: #ffffff;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .tarjeta-regalo-cafe img.icon-regalo-line {
+            width: 100px;
+            filter: brightness(0) invert(1);
+            margin: 0 auto 15px;
+        }
+
+        .titulo-datos-white {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            margin: 20px 0 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        .tarjeta-regalo-cafe p {
+            font-family: 'Montserrat', sans-serif;
+            font-style: italic;
+            text-transform: none;
+            font-size: 0.6rem;
+            letter-spacing: 0.5px;
+            line-height: 1.5;
+            margin: 4px 0;
+            font-weight: 500;
+            color: #ffffff !important;
+            opacity: 1 !important;
+            word-wrap: break-word;
+        }
+
+        .tarjeta-dress-blanca {
+            background-color: #ffffff;
+            width: 90%;
+            max-width: 300px;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            margin: -40px auto 0;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tarjeta-dress-blanca h3 {
+            font-family: 'Alex Brush', cursive;
+            font-size: 2rem;
+            color: #8d7a64;
+            margin: 0 0 10px;
+            font-weight: normal;
+        }
+
+        .tipo-vestimenta {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .seccion-interactiva {
+            width: 100%;
+            background-color: transparent;
+            /* Cambia esto */
+            padding: 60px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .tarjeta-interactiva {
+            background-color: white;
+            width: 100%;
+            max-width: 400px;
+            padding: 25px 15px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tarjeta-interactiva h3 {
+            font-family: 'Alex Brush', cursive;
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin: 0 0 8px;
+        }
+
+        .tarjeta-interactiva p {
+            font-size: 0.75rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            color: #5d4936;
+            opacity: 0.8;
+        }
+
+        .icon-small {
+            margin: 0 auto 10px !important;
+        }
+
+        .input-musica {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e0d7c8;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            outline: none;
+            background-color: #fdfaf5;
+        }
+
+        .btn-interactivo {
+            display: inline-block;
+            background-color: #8d7a64;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            width: auto;
+            min-width: 160px;
+        }
+
+        .seccion-contador {
+            width: 100%;
+            background-image: url('fondo5.png');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .capsula-tiempo {
+            background-image: url('fondo100.png');
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            max-width: 500px;
+            padding: 30px 10px;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            box-sizing: border-box;
+        }
+
+        .preparate {
+            letter-spacing: 3px;
+            font-size: 1.1rem;
+            margin: 0;
+            font-weight: 200;
+        }
+
+        .nos-vemos {
+            letter-spacing: 2px;
+            font-size: 0.65rem;
+            margin: 5px 0 20px;
+            opacity: 0.8;
+        }
+
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+
+        .timer-item span {
+            display: block;
+            font-family: 'Tenor Sans', sans-serif;
+            font-size: clamp(1.1rem, 5vw, 1.5rem);
+        }
+
+        .timer-label {
+            font-size: 0.55rem;
+            margin-top: 5px;
+            color: #f8f7f6;
+            text-transform: uppercase;
+        }
+
+        .confirmacion-texto {
+            text-align: center;
+            max-width: 450px;
+            color: #fdfaf5;
+            padding: 0 10px;
+        }
+
+        .confirmacion-texto h2 {
+            font-family: 'Alex Brush', cursive;
+            font-size: clamp(2rem, 10vw, 2.8rem);
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+
+        .confirmacion-texto p {
+            font-size: 0.8rem;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-blanco-outline {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 2px solid #fdfaf5;
+            border-radius: 30px;
+            color: #fdfaf5;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .seccion-final {
+            width: 100%;
+            padding: 60px 20px 40px;
+            background-image: url('fondo1.png');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .divisor-elegante {
+            width: 50px;
+            height: 1px;
+            background-color: #8d7a64;
+            margin-bottom: 25px;
+            opacity: 0.6;
+        }
+
+        .texto-final {
+            font-family: 'Tenor Sans', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 4px;
+            color: #5d4936;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .firmas-final {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 12vw, 4rem);
+            color: #8d7a64;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .aggradecimiento {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            margin-top: 25px;
+            opacity: 0.5;
+            font-style: italic;
+        }
+
+        .creditos {
+            width: 100%;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 0.5rem;
+            letter-spacing: 1px;
+            color: #1c1006;
+            opacity: 0.4;
+            text-transform: uppercase;
+            box-sizing: border-box;
+        }
+
+        /* --- MEDIA QUERIES PARA MÓVIL (VERSIÓN FINAL CON ESPACIADOS) --- */
+
+        @media (max-width: 480px) {
+            .sobre-container {
+                aspect-ratio: 1 / 1.3;
+            }
+
+            /* Sello posicionado en la punta del sobre */
+            .sello-lacre {
+                top: 30% !important;
+                width: 75px !important;
+                z-index: 4;
+            }
+
+            .tarjeta-blanca {
+                width: 76%;
+                left: 10%;
+                /* Mantenemos la tarjeta elevada para compensar el nuevo padding */
+                top: calc(36% - 5mm);
+
+                /* ESPACIO INICIAL: 30px arriba para que el texto respire */
+                padding: 30px 10px 15px 10px;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 0px;
+            }
+
+            /* ESPACIO DESPUÉS DE CADA LÍNEA */
+            .tarjeta-blanca .nombre-tarjeta {
+                font-size: 1.6rem;
+                margin: 0 0 12px 0;
+                /* Espacio bajo los nombres */
+                line-height: 1;
+                letter-spacing: 0px;
+            }
+
+            .tarjeta-blanca .honor,
+            .tarjeta-blanca .lema {
+                font-size: 0.45rem;
+                margin: 0 0 10px 0;
+                /* Espacio bajo el lema y honor */
+                line-height: 1.4;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                opacity: 0.8;
+            }
+
+            /* Bloque de fecha con más aire vertical */
+            .fecha-wrap {
+                margin: 15px 0;
+                gap: 12px;
+                align-items: center;
+            }
+
+            .num-grande {
+                font-size: 2.5rem;
+                font-weight: 400;
+            }
+
+            .mes-dia {
+                font-size: 0.5rem;
+                min-width: 65px;
+                padding: 5px 0;
+                border-top: 0.5px solid #a69683;
+                border-bottom: 0.5px solid #a69683;
+            }
+
+            .year {
+                margin-top: 10px;
+                /* Espacio antes del año */
+                font-size: 1rem;
+                letter-spacing: 8px;
+            }
+
+            /* Configuración de Arcos (Layout inferior) */
+            .layout-arcos {
+                height: 640px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .arco-fiesta {
+                top: 285px;
+                z-index: 2;
+            }
+
+            .tarjeta-arco {
+                width: 95%;
+            }
+        }
+
+        /* Ajustes para pantallas mini */
+        @media (max-width: 370px) {
+            .tarjeta-blanca {
+                top: calc(38% - 5mm);
+                padding-top: 20px;
+                /* Un poco menos de espacio arriba en pantallas mini */
+            }
+
+            .tarjeta-blanca .nombre-tarjeta {
+                font-size: 1.4rem;
+                margin-bottom: 8px;
+            }
+
+            .num-grande {
+                font-size: 2rem;
+            }
+        }
+
+        /* --- SECCIÓN GALERÍA DEFINTIVA --- */
+        .seccion-galeria {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .galeria-grid {
+            display: flex;
+            /* Usamos flex para que no se estiren al ancho total */
+            flex-wrap: wrap;
+            justify-content: center;
+            /* Centra las fotos en la pantalla */
+            gap: 20px;
+            max-width: 1000px;
+            /* Límite del área de fotos */
+            margin: 0 auto;
+        }
+
+        .foto-item {
+            /* AQUÍ ESTÁ EL TRUCO: Tamaño fijo en PC */
+            width: 250px;
+            height: 250px;
+
+            overflow: hidden;
+            /* Esto corta lo que sobra de la foto */
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            background-color: #ffffff;
+        }
+
+        .foto-item img {
+            /* La imagen debe llenar el cuadro de 250px, ni más ni menos */
+            width: 100% !important;
+            height: 100% !important;
+
+            /* 'cover' es vital para que no se vea estirada, la recorta al centro */
+            object-fit: cover !important;
+            display: block;
+        }
+
+        .hidden-music {
+            display: none !important;
+        }
+
+        .music-player {
+            position: relative;
+            width: 50px;
+            height: 50px;
+
+            margin: 20px auto;
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- AJUSTE PARA MÓVIL (Aquí sí que ocupen más pantalla) --- */
+
+
+        @media (max-width: 480px) {
+            .galeria-grid {
+                display: block;
+                /* Una foto tras otra */
+                padding: 0 10px;
+            }
+
+            .foto-item {
+                width: 100%;
+                /* En el cel que use el ancho del teléfono */
+                height: 350px;
+                /* Un poco más altas para que se vean bien */
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Opcional: Para que tenga una animación al aparecer */
+        .seccion-foto-grande {
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .seccion-foto-grande.active {
+            opacity: 1;
+        }
+
+        /* FOTO PRINCIPAL */
+        .seccion-foto-destacada {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .foto-principal {
+            width: 100%;
+            display: block;
+            margin: 0;
+        }
+
+        @media (max-width: 480px) {
+
+            .seccion-foto-destacada {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .foto-principal {
+                width: 100%;
+                /* ocupa todo el ancho real */
+                height: 85vh;
+                /* 👈 CLAVE: la hace grande en pantalla */
+                object-fit: cover;
+                /* llena sin deformarse */
+                display: block;
+                margin: 0;
+            }
+
+            .preloader-img {
+                width: 180px;
+                height: 180px;
+                object-fit: contain;
+                border-radius: 50%;
+                /* si la quieres circular */
+            }
+
+            .header-section {
+                padding: 20px 0;
+                /* reduce espacio arriba/abajo */
+            }
+
+            .cursive,
+            .nombres-tit {
+                margin-bottom: 5px;
+                /* evita que empuje la foto */
+            }
+        }
+
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999999;
+            cursor: pointer;
+            transition: .8s;
+        }
+
+        #preloader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-full {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Fondo para todas las secciones blancas */
+        .seccion-padres,
+        .seccion-galeria,
+        .seccion-pases,
+        .seccion-itinerario,
+        .seccion-interactiva,
+        .tarjeta-interactiva,
+        .tarjeta-dress-blanca,
+        .tarjeta-blanca {
+            background-image: url("fondo100.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .tarjeta-interactiva {
+            background-image: url("fondo100.png");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .tarjeta-dress-blanca {
+            background-image: url("fondo100.png");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .tarjeta-blanca {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, .75), rgba(255, 255, 255, .75)),
+                url("fondo100.png");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .tarjeta-arco {
+            position: absolute;
+            background-image: url('fondo100.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .tarjeta-blanca {
+            background-image: url("fondo100.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .header-section {
+            padding-bottom: 20px;
+        }
+
+        .escena-invitacion {
+            padding-top: 20px;
+        }
+
+        .video-inicio video {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* 1. Contenedor principal que ocupa toda la pantalla */
+        #preloader {
+            position: fixed;
+            /* O absolute, dependiendo de tu layout */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+        }
+
+        /* 2. Contenedor relativo para que el texto sepa dónde posicionarse */
+        .contenedor-portada {
+            position: relative;
+            /* CRUCIAL: Esto permite el posicionamiento absoluto dentro */
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 3. La imagen de fondo (asegura que cubra el área) */
+        .preloader-full {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Asegura que la imagen cubra sin deformarse */
+            display: block;
+        }
+
+        /* 4. El estilo y posición flotante del texto */
+        .texto-tocar {
+            /* Posicionamiento absoluto respecto a .contenedor-portada */
+            position: absolute;
+            bottom: 40px;
+            /* Distancia desde el borde inferior (ajústalo a tu gusto) */
+            left: 50%;
+            transform: translateX(-50%);
+            /* Centrado horizontal perfecto */
+
+            /* Estilo visual para legibilidad */
+            color: white;
+            /* O un color que contraste con tu imagen "2.png" */
+            font-family: sans-serif, Arial;
+            /* Usa tu tipografía aquí */
+            font-size: 1.1rem;
+            text-align: center;
+
+            /* Sombra de texto para asegurar contraste si la imagen es clara */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+
+            /* Asegura que el texto esté por encima de la imagen */
+            z-index: 10;
+
+            /* Evita que el texto se pueda seleccionar */
+            user-select: none;
+            pointer-events: none;
+        }
+
+        /* 1. Definición de la animación de flotación */
+        @keyframes flotar {
+            0% {
+                transform: translate(-50%, 0px);
+                /* Posición inicial */
+            }
+
+            50% {
+                transform: translate(-50%, -15px);
+                /* Sube 15 píxeles */
+            }
+
+            100% {
+                transform: translate(-50%, 0px);
+                /* Regresa a la posición inicial */
+            }
+        }
+
+        /* 2. Aplicación de la animación a la clase texto-tocar */
+        .texto-tocar {
+            position: absolute;
+            bottom: 50px;
+            /* Distancia desde abajo */
+            left: 50%;
+
+            /* Llamamos a la animación */
+            animation: flotar 3s ease-in-out infinite;
+
+            /* Estilos visuales */
+            color: white;
+            font-family: sans-serif;
+            font-size: 1.1rem;
+            text-align: center;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            pointer-events: none;
+            /* Asegura que el clic pase a través del texto */
+            z-index: 10;
+        }
+
+
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
+        /* =========================================
+   REPRODUCTOR ESTILO DE LA IMAGEN
+========================================= */
+
+        .music-section {
+            width: 100%;
+            max-width: 430px;
+            margin: 0 auto;
+            padding: 25px 25px 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* Texto superior */
+        .music-text {
+            margin: 0 0 10px 0;
+            font-family: Arial, sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: #777;
+            text-transform: uppercase;
+        }
+
+        /* =========================================
+   BARRA DE PROGRESO
+========================================= */
+
+        .music-progress-container {
+            width: 100%;
+            height: 20px;
+            position: relative;
+            cursor: pointer;
+            margin: 0 auto 8px;
+        }
+
+        /* Línea completa */
+        .music-progress-container::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 8px;
+            height: 3px;
+            background: #777;
+            border-radius: 10px;
+        }
+
+        /* Línea reproducida */
+        .music-progress {
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 0%;
+            height: 3px;
+            background: #333;
+            border-radius: 10px;
+            z-index: 2;
+        }
+
+        /* Punto al final */
+        .music-progress-dot {
+            position: absolute;
+            width: 9px;
+            height: 9px;
+            background: #444;
+            border-radius: 50%;
+            top: 5px;
+            left: 0%;
+            transform: translateX(-50%);
+            z-index: 3;
+            transition: left 0.05s linear;
+        }
+
+        /* =========================================
+   CONTROLES
+========================================= */
+
+        .music-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-top: 5px;
+        }
+
+        .music-btn {
+            width: 25px;
+            height: 30px;
+            border: none;
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .music-btn:focus {
+            outline: none;
+        }
+
+        /* =========================================
+   BOTÓN PLAY
+========================================= */
+
+        .play-btn {
+            width: 30px;
+            height: 30px;
+        }
+
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 11px solid #444;
+            margin-left: 3px;
+        }
+
+        /* Cuando está reproduciendo: PAUSA */
+        .play-icon.pause {
+            width: 10px;
+            height: 14px;
+            border: none;
+            border-left: 4px solid #444;
+            border-right: 4px solid #444;
+            margin-left: 0;
+        }
+
+        /* =========================================
+   BOTÓN ANTERIOR
+========================================= */
+
+        .prev-icon {
+            position: relative;
+            width: 15px;
+            height: 14px;
+        }
+
+        /* Triángulo */
+        .prev-icon::before {
+            content: "";
+            position: absolute;
+            left: 3px;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-right: 9px solid #555;
+        }
+
+        /* Línea vertical */
+        .prev-icon::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 2px;
+            height: 11px;
+            background: #555;
+        }
+
+
+        /* =========================================
+   BOTÓN SIGUIENTE
+========================================= */
+
+        .next-icon {
+            position: relative;
+            width: 15px;
+            height: 14px;
+        }
+
+        /* Triángulo */
+        .next-icon::before {
+            content: "";
+            position: absolute;
+            right: 3px;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 9px solid #555;
+        }
+
+        /* Línea vertical */
+        .next-icon::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 2px;
+            width: 2px;
+            height: 11px;
+            background: #555;
+        }
+
+
+        /* =========================================
+   MÓVIL
+========================================= */
+
+        @media (max-width: 480px) {
+
+            .music-section {
+                max-width: 100%;
+                padding: 25px 35px 20px;
+            }
+
+            .music-text {
+                font-size: 9px;
+                letter-spacing: 1.8px;
+            }
+
+            .music-controls {
+                gap: 30px;
+            }
+        }
+
+
+        /* ==========================================
+   TARJETA BLANCA - DISEÑO EXACTO DE LA FOTO
+   ========================================== */
+
+        .tarjeta-blanca {
+            width: 100%;
+            max-width: 330px;
+            min-height: 430px;
+            margin: 0 auto;
+            padding: 42px 22px 35px;
+            box-sizing: border-box;
+
+            background: #ffffff;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+
+            text-align: center;
+        }
+
+
+        /* ==========================================
+   FRASE SUPERIOR
+   ========================================== */
+
+        .tarjeta-blanca .lema {
+            margin: 0 0 45px 0;
+            padding: 0;
+
+            color: #777777;
+
+            font-family: "Montserrat", sans-serif;
+            font-size: 10px;
+            font-weight: 400;
+            font-style: italic;
+
+            line-height: 1.45;
+            letter-spacing: 0.35px;
+
+            text-align: center;
+        }
+
+
+        /* ==========================================
+   CARLA / GUILLERMO
+   ========================================== */
+
+        .tarjeta-blanca .nombre-tarjeta {
+            margin: 0;
+            padding: 0;
+
+            color: #707070;
+
+            font-family: "Bodoni Moda", "Times New Roman", serif;
+            font-size: 31px;
+            font-weight: 400;
+
+            line-height: 1;
+            letter-spacing: 8px;
+
+            text-align: center;
+        }
+
+
+        /* ==========================================
+   AMPERSON
+   ========================================== */
+
+        .tarjeta-blanca .ampersand-tarjeta {
+            margin: 12px 0 12px 0;
+
+            color: #858585;
+
+            font-family: "Bodoni Moda", "Times New Roman", serif;
+            font-size: 17px;
+            font-weight: 400;
+
+            line-height: 1;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+        }
+
+
+        /* Líneas a los lados del & */
+        .tarjeta-blanca .ampersand-tarjeta::before,
+        .tarjeta-blanca .ampersand-tarjeta::after {
+            content: "";
+
+            position: absolute;
+            top: 50%;
+
+            width: 74px;
+            height: 1px;
+
+            background: #777777;
+        }
+
+
+        /* Línea izquierda */
+        .tarjeta-blanca .ampersand-tarjeta::before {
+            right: calc(50% + 24px);
+        }
+
+
+        /* Línea derecha */
+        .tarjeta-blanca .ampersand-tarjeta::after {
+            left: calc(50% + 24px);
+        }
+
+
+        /* ==========================================
+   SEGUNDO NOMBRE
+   ========================================== */
+
+        .tarjeta-blanca .nombre-tarjeta+.ampersand-tarjeta+.nombre-tarjeta {
+            margin-top: 0;
+        }
+
+
+        /* ==========================================
+   TEXTO INFERIOR
+   ========================================== */
+
+        .tarjeta-blanca .honor {
+            margin: 34px 0 0 0;
+            padding: 0;
+
+            color: #777777;
+
+            font-family: "Montserrat", sans-serif;
+            font-size: 9.5px;
+            font-weight: 400;
+            font-style: italic;
+
+            line-height: 1.45;
+            letter-spacing: 0.3px;
+
+            text-align: center;
+        }
+
+
+        /* ==========================================
+   MÓVIL
+   ========================================== */
+
+        @media (max-width: 480px) {
+
+            .tarjeta-blanca {
+                max-width: 330px;
+                min-height: 420px;
+                padding: 40px 18px 32px;
+            }
+
+            .tarjeta-blanca .lema {
+                font-size: 9px;
+                margin-bottom: 43px;
+            }
+
+            .tarjeta-blanca .nombre-tarjeta {
+                font-size: 29px;
+                letter-spacing: 7px;
+            }
+
+            .tarjeta-blanca .ampersand-tarjeta {
+                font-size: 16px;
+                margin-top: 12px;
+                margin-bottom: 12px;
+            }
+
+            .tarjeta-blanca .ampersand-tarjeta::before,
+            .tarjeta-blanca .ampersand-tarjeta::after {
+                width: 72px;
+            }
+
+            .tarjeta-blanca .ampersand-tarjeta::before {
+                right: calc(50% + 23px);
+            }
+
+            .tarjeta-blanca .ampersand-tarjeta::after {
+                left: calc(50% + 23px);
+            }
+
+            .tarjeta-blanca .honor {
+                font-size: 8.8px;
+                margin-top: 33px;
+            }
+        }
+
+
+        .contenedor-eventos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Forma de Arco */
+        .tarjeta-arco {
+            background-color: #8fa2c0;
+            /* Azul del diseño */
+            border-radius: 180px 180px 0 0;
+            /* Curva superior arqueada */
+            width: 300px;
+            padding: 50px 20px 30px 20px;
+            text-align: center;
+            color: #ffffff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .icono-evento {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            filter: brightness(0) invert(1);
+            /* Mantiene la imagen en blanco si es PNG */
+        }
+
+        .titulo-evento {
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            font-weight: 300;
+            margin: 0 0 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            padding-bottom: 8px;
+            width: 80%;
+        }
+
+        .info-evento {
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .info-evento p {
+            margin: 4px 0;
+        }
+
+        .hora {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Botón Blanco Minimalista */
+        .btn-maps {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #8fa2c0;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-maps:hover {
+            background-color: #f0f4f8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+
+        /* Importación de fuentes similares a la imagen */
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap');
+
+        /* Contenedor principal estilo "Arco" */
+        .capsula-tiempo {
+            background-color: #8fa1c0;
+            /* Azul grisáceo de la imagen */
+            border-radius: 180px 180px 0 0;
+            /* Forma curva superior (arco) */
+            padding: 50px 30px 30px 30px;
+            text-align: center;
+            color: #ffffff;
+            max-width: 500px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Título principal */
+        .preparate {
+            font-family: 'Cormorant Garamond', serif;
+            /* Fuente con serif elegante */
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 6px;
+            margin: 0 0 8px 0;
+            text-transform: uppercase;
+        }
+
+        /* Subtítulo */
+        .nos-vemos {
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin: 0 0 35px 0;
+            opacity: 0.9;
+        }
+
+        /* Estructura del temporizador */
+        .timer-grid {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .timer-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 60px;
+        }
+
+        /* Números y dos puntos */
+        .timer-item span,
+        .colon {
+            font-family: 'Courier New', Courier, monospace;
+            /* Fuente estilo máquina de escribir/monospaced */
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        .colon {
+            margin-top: 2px;
+        }
+
+        /* Etiquetas (DíAS, HORAS, etc.) */
+        .timer-label {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+            margin-top: 15px;
+            text-transform: uppercase;
+            opacity: 0.85;
+        }
+        .tarjeta-ubicacion {
+    width: 90%;
+    max-width: 430px;
+    min-height: 420px;
+
+    margin: 35px auto;
+    padding: 40px 30px;
+
+    box-sizing: border-box;
+
+    background-image: url("fondo5.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 35px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+/* ICONO GRANDE */
+.icono-ubicacion {
+    width: 120px;
+    height: 120px;
+
+    object-fit: contain;
+
+    margin-bottom: 15px;
+}
+
+/* TÍTULO */
+.titulo-ubicacion {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 2rem;
+    font-weight: 500;
+
+    letter-spacing: 5px;
+
+    color: white;
+
+    margin: 5px 0 10px;
+}
+
+/* LÍNEA */
+.titulo-ubicacion::after {
+    content: "";
+
+    display: block;
+
+    width: 250px;
+    height: 1px;
+
+    background: rgba(255,255,255,0.7);
+
+    margin: 12px auto 18px;
+}
+
+/* INFORMACIÓN */
+.info-ubicacion {
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.info-ubicacion p {
+    margin: 6px 0;
+    font-size: 1.05rem;
+}
+
+.info-ubicacion .hora-ubicacion {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+/* BOTÓN */
+.btn-ubicacion {
+    margin-top: 25px;
+
+    padding: 13px 30px;
+
+    background: white;
+    color: #7f8fa8;
+
+    border-radius: 30px;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+.tarjeta-blanca {
+    /* Opción A: Desplazamiento directo hacia la izquierda */
+    position: absolute;
+    left: 3%; /* Disminuye este número (40%, 38%) para moverla más a la izquierda */
+
+    /* Opción B: Si no quieres cambiar el "left", usa un margen negativo */
+    /* margin-left: -20px; */
+}
+    </style>
+
+</head>
+
+<body>
+    <div id="preloader">
+        <img src="2.jpeg" alt="Portada" class="preloader-full">
+
+        <div class="texto-tocar">
+            Abrir Invitación
+        </div>
+    </div>
+    <section class="foto-inicio">
+        <img src="4.jpeg" alt="Joe y Elisa" class="foto-entrada-celular">
+    </section>
+
+
+    <div class="music-section">
+
+        <p class="music-text">DALE UN CLIC Y ESCUCHA NUESTRA CANCIÓN</p>
+
+        <!-- Barra de progreso -->
+        <div class="music-progress-container" id="progressContainer">
+            <div class="music-progress" id="musicProgress"></div>
+            <div class="music-progress-dot" id="musicDot"></div>
+        </div>
+
+        <!-- Controles -->
+        <div class="music-controls">
+
+            <!-- Anterior -->
+            <button class="music-btn" id="prevMusic" aria-label="Canción anterior">
+                <span class="prev-icon"></span>
+            </button>
+
+            <!-- Play / Pause -->
+            <button class="music-btn play-btn" id="playMusic" aria-label="Reproducir música">
+                <span class="play-icon"></span>
+            </button>
+
+            <!-- Siguiente -->
+            <button class="music-btn" id="nextMusic" aria-label="Siguiente canción">
+                <span class="next-icon"></span>
+            </button>
+
+        </div>
+
+        <!-- Audio -->
+        <audio id="musicaBoda" preload="auto">
+            <source src="musica.mp3" type="audio/mpeg">
+            Tu navegador no soporta audio.
+        </audio>
+
+    </div>
+   <section class="foto-inicio">
+        <img src="fod.png" alt="Joe y Elisa" class="foto-entrada-celular">
+    </section>
+   
+
+<!-- CEREMONIA -->
+<div class="tarjeta-ubicacion">
+
+    <img src="ceremonia.png" alt="Ceremonia" class="icono-ubicacion">
+
+    <h3 class="titulo-ubicacion">CEREMONIA Y RECEPCIÓN</h3>
+
+    <div class="info-ubicacion">
+        <p class="hora-ubicacion">18:00 - 18:30 PM</p>
+        <p>Malecón Simón Bolívar y P. Ycaza (esquina) </p>
+        <p>Edificio La Previsora</p>
+        <p>Guayaquil - Ecuador</p>
+    </div>
+
+    <a href="https://maps.app.goo.gl/6HFaDhBwPjgJBYhk9"
+       target="_blank"
+       class="btn-ubicacion">
+        VER UBICACIÓN
+    </a>
+</div>
+
+
+
+
+
+
+    <div class="seccion-itinerario">
+        <h2 class="itinerario-titulo">Itinerario</h2>
+        <div class="timeline">
+
+          
+
+            <div class="timeline-item">
+                <div class="timeline-icon"><img src="recep.png" alt="Icono"></div>
+                <div class="timeline-content">
+                    <p class="timeline-desc">Recepción</p>
+                    <div class="timeline-time">18:00 hs</div>
+                </div>
+            </div>
+     
+
+
+        <div class="timeline-item">
+            <div class="timeline-icon"><img src="nov.png" alt="Icono"></div>
+            <div class="timeline-content">
+                <p class="timeline-desc">Ceremonia y Recepción</p>
+                <div class="timeline-time">18:30 hs</div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-icon"><img src="cenas.png" alt="Icono"></div>
+            <div class="timeline-content">
+                <p class="timeline-desc">Cena</p>
+                <div class="timeline-time">19:30 hs</div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <img src="imageso.png" alt="Icono" style="width:40px; height:auto;">
+            </div>
+            <div class="timeline-content">
+                <p class="timeline-desc">¡Momentos para Compartir!</p>
+                <div class="timeline-time">20:30 hs</div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-icon"><img src="fin.png" alt="Icono"></div>
+            <div class="timeline-content">
+                <p class="timeline-desc">Felices por Siempre</p>
+                <div class="timeline-time">23:00 hs</div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+ <section class="foto-inicio">
+        <img src="WhatsApp Image 2026-10-13 at 09.28.47 (2).jpeg" alt="Joe y Elisa" class="foto-entrada-celular">
+    </section>
+<style>
+  .foto-destacada-contenedor {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    overflow: hidden;
+  }
+
+  .foto-destacada-img {
+    width: 95%; /* Tamaño grande en PC */
+    max-width: 900px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Ajuste para pantallas pequeñas (Celulares) */
+  @media (max-width: 768px) {
+    .foto-destacada-img {
+      width: 120%; /* Expande la imagen más allá de los márgenes estándar */
+      max-width: none;
+      transform: scale(1.1); /* Agranda la imagen en celular */
+    }
+  }
+  .tarjeta-especial {
+    width: 90%;
+    max-width: 430px;
+
+    padding: 45px 30px;
+
+    box-sizing: border-box;
+
+    /* FONDO DE LAS TARJETAS */
+    background-image: url("si.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 35px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+</style>
+ <!-- ============================= -->
+<!-- SECCIÓN DRESS CODE -->
+<!-- ============================= -->
+<section class="foto-inicio" style="width: 100%; display: flex; justify-content: center; overflow: hidden;">
+    <img src="padres.png" 
+         alt="Joe y Elisa" 
+         class="foto-entrada-celular"
+         style="width: 75%; max-width: 320px; height: auto; display: block;">
+</section>
+
+<section class="seccion-especial" >
+
+    <div class="tarjeta-especial" style="max-width: 450px; margin: 0 auto; color: #F3E5AB;">
+
+        <img src="dress.png" 
+             alt="Dress Code" 
+             class="imagen-especial" 
+             style="width: 70px; height: auto; margin-bottom: 15px; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3));">
+
+        <h2 class="titulo-especial" style="color: #ffffff; font-family: 'Cinzel', 'Cormorant Garamond', 'Playfair Display', serif; font-size: 20px; letter-spacing: 3px; font-weight: 500; margin: 0 0 10px 0; text-transform: uppercase;">
+            Código de Vestimenta
+        </h2>
+
+        <div class="linea-especial" style="background: linear-gradient(90deg, transparent, #D4AF37, transparent); height: 1px; width: 60%; margin: 15px auto;"></div>
+
+        <p class="texto-especial" style="color:  #ffffff; font-family: 'Montserrat', 'Lato', sans-serif; font-size: 15px; line-height: 1.6; font-weight: 300; margin: 0 0 15px 0;">
+            Elegancia y estilo para acompañarnos<br>en este día tan especial.
+        </p>
+
+        <p class="texto-especial" style="color:  #ffffff; font-family: 'Montserrat', 'Lato', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 1px; margin-top: 25px; margin-bottom: 8px; text-transform: uppercase;">
+            Por favor evitar:
+        </p>
+
+        <p class="texto-especial" style="color:  #ffffff; font-family: 'Montserrat', 'Lato', sans-serif; font-size: 14px; line-height: 1.7; margin: 0;">
+            • Vestidos en tonos blanco, marfil o beige para damas.<br>
+            • Trajes tipo smoking para caballeros.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- SECCIÓN REGALOS + LLUVIA DE SOBRES -->
+<!-- ============================= -->
+
+<section class="seccion-especial">
+
+    <div class="tarjeta-especial"
+         style="background-image: url('fondo100.png');">
+
+        <!-- REGALOS -->
+
+        <img src="regalos.png" style="width: 80px; height: auto;"s
+             alt="Regalos"
+             class="imagen-especial">
+
+        <h2 class="titulo-especial">REGALOS</h2>
+
+        <div class="linea-especial"></div>
+
+        <p class="texto-especial">
+            Lo más importante para nosotros
+            es compartir este día contigo.
+        </p>
+
+        <p class="texto-especial">
+            Si deseas hacernos un regalo,
+            puedes hacerlo de la siguiente manera:
+        </p>
+
+        <div class="datos-bancarios">
+
+            <p class="dato-especial">
+                <strong> Banco del Pacífico - Cuenta de Ahorros</strong>
+            </p>
+
+
+            <p class="dato-especial">
+                <strong>N.º de Cuenta:</strong> 1062102265
+            </p>
+
+            <p class="dato-especial">
+                <strong>Cédula:</strong> 0929793529
+
+            <p class="dato-especial">
+                <strong>Titular:</strong> Katherine Paola Baquerizo León 
+            </p>
+
+        </div>
+               <div class="linea-especial" style="background: linear-gradient(90deg, transparent, #D4AF37, transparent); height: 1px; width: 60%; margin: 15px auto;"></div>
+
+    
+<!-- Nota sutil añadida -->
+<p style="font-size: 11px; color: #473c3c; margin-top: 12px; font-style: italic; letter-spacing: 0.3px;">
+    Agradecemos sus muestras de cariño y transferencias hasta el 15 de noviembre.
+</p>
+
+     
+
+    </div>
+
+</section>
+<br>
+
+
+<section class="foto-destacada-contenedor" style="max-width: 300px; width: 100%; margin: 0 auto; text-align: center;">
+    <img 
+        src="Gemini_Generated_Image_lnstcklnstcklnst__1_-removebg-preview-Photoroom.png" 
+        alt="Joe y Elisa" 
+        class="foto-destacada-img"
+        style="width: 100%; height: auto; display: block;"
+    >
+</section>
+<div class="tarjeta-ubicacion">
+
+    <img src="ceremonia.png" alt="Participa" class="icono-ubicacion">
+
+    <h3 class="titulo-ubicacion">COMPARTE CON NOSOTROS</h3>
+
+    <div class="info-ubicacion">
+        <p>Ayúdanos a guardar los mejores momentos de este día.</p>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:12px; align-items:center; margin-top:25px;">
+
+        <a href="https://drive.google.com/drive/folders/1s0rZIxKnfoQnbgawB2ZVeQuoXIpavnmH?usp=sharing" 
+           class="btn-ubicacion" target="_blank" 
+           style="width:80%; text-align:center;">
+            📸 SUBIR FOTOS
+        </a>
+
+        <a href="https://www.youtube.com/playlist?list=PLQhydywt-mU8&jct=zr15fGlx9F1C3IFwJjKFDg" 
+           class="btn-ubicacion" target="_blank" 
+           style="width:80%; text-align:center;">
+            🎵 SUGERIR MÚSICA
+        </a>
+
+    </div>
+
+</div>
+
+<!-- TARJETA ELEGANTE PARA INVITADO Y PASES -->
+<section class="tarjeta-invitacion">
+  <div class="tarjeta-marco">
+
+    <div class="adorno-superior">✦</div>
+
+    <p class="etiqueta-invitacion">UNA INVITACIÓN ESPECIAL PARA</p>
+
+    <div class="linea-dorada"></div>
+
+    <h2 id="nombre-invitado">Nombre del invitado</h2>
+
+    <p class="mensaje-invitacion">
+      Nos encantará compartir este momento contigo
+    </p>
+
+    <div class="separador">
+      <span>✧</span>
+    </div>
+
+    <p class="etiqueta-pases">HEMOS RESERVADO PARA TI</p>
+
+    <div class="pases-circulo">
+      <span id="num-pases">2</span>
+    </div>
+
+    <p class="texto-pases">PASES</p>
+
+    <div class="linea-dorada inferior"></div>
+
+    <p class="pie-tarjeta">Con cariño, te esperamos</p>
+
+  </div>
+</section>
+
+<style>
+  .tarjeta-invitacion {
+    width: 100%;
+    max-width: 460px;
+    margin: 28px auto;
+    padding: 12px;
+    box-sizing: border-box;
+    color: #514333;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  .tarjeta-invitacion *,
+  .tarjeta-invitacion *::before,
+  .tarjeta-invitacion *::after {
+    box-sizing: border-box;
+  }
+
+  .tarjeta-marco {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: clamp(28px, 7vw, 48px) clamp(18px, 6vw, 38px);
+    background:
+      radial-gradient(
+        ellipse at top,
+        rgba(214, 187, 137, 0.13),
+        transparent 65%
+      ),
+      #fffdf8;
+    border: 1px solid #c9ad78;
+    border-radius: 5px;
+    box-shadow:
+      0 12px 35px rgba(73, 54, 30, 0.10),
+      inset 0 0 0 5px #fffdf8,
+      inset 0 0 0 6px rgba(201, 173, 120, 0.45);
+  }
+
+  .adorno-superior {
+    color: #b18b4e;
+    font-size: 30px;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .etiqueta-invitacion,
+  .etiqueta-pases {
+    margin: 0;
+    color: #92764b;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(10px, 2.8vw, 12px);
+    letter-spacing: clamp(1.5px, 0.5vw, 3px);
+    line-height: 1.8;
+  }
+
+  .linea-dorada {
+    width: 68px;
+    height: 1px;
+    margin: 20px auto;
+    background: linear-gradient(
+      to right,
+      transparent,
+      #b18b4e,
+      transparent
+    );
+  }
+
+  #nombre-invitado {
+    margin: 0 auto;
+    max-width: 100%;
+    color: #463727;
+    font-size: clamp(27px, 7vw, 40px);
+    font-weight: normal;
+    font-style: italic;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .mensaje-invitacion {
+    max-width: 290px;
+    margin: 15px auto 0;
+    color: #827565;
+    font-size: clamp(14px, 3.8vw, 16px);
+    line-height: 1.7;
+  }
+
+  .separador {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 24px 0;
+    color: #b18b4e;
+    font-size: 19px;
+  }
+
+  .separador::before,
+  .separador::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #e6d8bd;
+  }
+
+  .pases-circulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    margin: 18px auto 10px;
+    border: 1px solid #b18b4e;
+    border-radius: 50%;
+    background: rgba(201, 173, 120, 0.08);
+  }
+
+  #num-pases {
+    color: #8d6c38;
+    font-size: 34px;
+    line-height: 1;
+  }
+
+  .texto-pases {
+    margin: 0;
+    color: #92764b;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    padding-left: 4px;
+  }
+
+  .linea-dorada.inferior {
+    margin-top: 24px;
+    margin-bottom: 17px;
+  }
+
+  .pie-tarjeta {
+    margin: 0;
+    color: #827565;
+    font-size: 15px;
+    font-style: italic;
+  }
+
+  @media (max-width: 380px) {
+    .tarjeta-invitacion {
+      padding: 7px;
+      margin: 18px auto;
+    }
+
+    .tarjeta-marco {
+      padding: 28px 16px;
+    }
+
+    .adorno-superior {
+      margin-bottom: 16px;
+    }
+
+    .pases-circulo {
+      width: 66px;
+      height: 66px;
+    }
+
+    #num-pases {
+      font-size: 30px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tarjeta-invitacion,
+    .tarjeta-invitacion * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const parametros = new URLSearchParams(
+      window.location.search
+    );
+
+    const invitado = parametros.get("invitado");
+    const pases = Number(parametros.get("pases"));
+
+    const nombreElemento =
+      document.getElementById("nombre-invitado");
+
+    const pasesElemento =
+      document.getElementById("num-pases");
+
+    if (invitado && nombreElemento) {
+      nombreElemento.textContent = invitado;
+    }
+
+    if (
+      parametros.has("pases") &&
+      Number.isInteger(pases) &&
+      pases > 0 &&
+      pasesElemento
+    ) {
+      pasesElemento.textContent = pases;
+    }
+  })();
+</script>
+
+
+<div class="capsula-tiempo" style="background-image: url('si.png');">
+    <h3 class="preparate">¡PRONTO!</h3>
+    <p class="nos-vemos">NOS VEMOS DENTRO DE</p>
+
+    <div class="timer-container">
+        <div class="timer-grid">
+            <div class="timer-item">
+                <span id="days">66</span>
+                <div class="timer-label">DÍAS</div>
+            </div>
+
+            <span class="colon">:</span>
+
+            <div class="timer-item">
+                <span id="hours">06</span>
+                <div class="timer-label">HORAS</div>
+            </div>
+
+            <span class="colon">:</span>
+
+            <div class="timer-item">
+                <span id="minutes">45</span>
+                <div class="timer-label">MINUTOS</div>
+            </div>
+            
+            <span class="colon">:</span>
+
+            <div class="timer-item">
+                <span id="seconds">45</span>
+                <div class="timer-label">SEGUNDOS</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTÓN DE CONFIRMAR ASISTENCIA -->
+    <div style="margin-top: 35px;">
+        <a href="https://wa.me/593979388113?text=¡Hola!%20Quiero%20confirmar%20mi%20asistencia%20a%20la%20boda.%20Nombre%20de%20los%20invitados:%20" 
+           target="_blank" 
+           class="btn-confirmar">
+            CONFIRMAR ASISTENCIA
+        </a>
+                <div class="linea-especial" style="background: linear-gradient(90deg, transparent, #D4AF37, transparent); height: 1px; width: 60%; margin: 15px auto;"></div>
+
+        <!-- Nota sutil añadida -->
+        <p style="font-size: 13px; color: #ccc1c1; margin-top: 12px; font-style: italic; letter-spacing: 0.3px;">
+            Agradecemos confirmar su asistencia hasta el 15 de noviembre.
+        </p>
+    </div>
+</div>
+
+    <style>
+        .btn-confirmar {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #8fa2c0;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .btn-confirmar:hover {
+            background-color: #f0f4f8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        .tarjeta-especial {
+    margin: 0 auto;
+}
+@media (max-width: 480px) {
+
+    /* =====================================
+       CONTADOR - QUE TODO QUEDE DENTRO DEL ARCO
+       ===================================== */
+
+    .capsula-tiempo {
+        width: 90% !important;
+        max-width: 350px !important;
+        padding: 35px 15px 25px !important;
+        border-radius: 120px 120px 0 0 !important;
+    }
+
+    .preparate {
+        font-size: 1.7rem !important;
+        letter-spacing: 3px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .nos-vemos {
+        font-size: 0.65rem !important;
+        letter-spacing: 1.5px !important;
+        margin-bottom: 25px !important;
+    }
+
+    .timer-grid {
+        gap: 3px !important;
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    .timer-item {
+        min-width: 45px !important;
+    }
+
+    .timer-item span,
+    .colon {
+        font-size: 1.25rem !important;
+    }
+
+    .timer-label {
+        font-size: 0.42rem !important;
+        letter-spacing: 0.5px !important;
+        margin-top: 10px !important;
+    }
+
+    .colon {
+        margin-top: 1px !important;
+    }
+
+
+    /* =====================================
+       CEREMONIA / RECEPCIÓN
+       ===================================== */
+
+    .tarjeta-ubicacion {
+        width: 88% !important;
+        max-width: 350px !important;
+        min-height: 350px !important;
+        padding: 30px 20px !important;
+        margin: 25px auto !important;
+        border-radius: 30px !important;
+    }
+
+    .icono-ubicacion {
+        width: 80px !important;
+        height: 80px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .titulo-ubicacion {
+        font-size: 1.35rem !important;
+        letter-spacing: 3px !important;
+        margin: 5px 0 !important;
+    }
+
+    .titulo-ubicacion::after {
+        width: 150px !important;
+        margin: 8px auto 12px !important;
+    }
+
+    .info-ubicacion p {
+        font-size: 0.8rem !important;
+        margin: 4px 0 !important;
+    }
+
+    .info-ubicacion .hora-ubicacion {
+        font-size: 1rem !important;
+    }
+
+    .btn-ubicacion {
+        margin-top: 18px !important;
+        padding: 9px 20px !important;
+        font-size: 0.65rem !important;
+        letter-spacing: 1px !important;
+    }
+
+
+    /* =====================================
+       REGALOS / LLUVIA DE SOBRES / DRESS CODE
+       ===================================== */
+
+    .tarjeta-especial {
+        width: 88% !important;
+        max-width: 350px !important;
+        padding: 30px 20px !important;
+        border-radius: 28px !important;
+    }
+
+    .tarjeta-especial .imagen-especial {
+        width: 65px !important;
+        height: auto !important;
+        margin: 0 auto 10px !important;
+    }
+
+    .titulo-especial {
+        font-size: 1.35rem !important;
+        letter-spacing: 2px !important;
+        margin: 8px 0 !important;
+    }
+
+    .linea-especial {
+        width: 130px !important;
+        margin: 8px auto 15px !important;
+    }
+
+    .texto-especial {
+        font-size: 0.72rem !important;
+        line-height: 1.5 !important;
+        margin: 8px 0 !important;
+    }
+
+    .dato-especial {
+        font-size: 0.7rem !important;
+        line-height: 1.4 !important;
+        margin: 6px 0 !important;
+    }
+
+    .datos-bancarios {
+        width: 100% !important;
+    }
+
+
+    /* =====================================
+       BOTÓN CONFIRMAR
+       ===================================== */
+
+    .btn-confirmar {
+        font-size: 0.65rem !important;
+        padding: 10px 18px !important;
+        letter-spacing: 1px !important;
+    }
+}
+    </style>
+
+    <section class="foto-inicio">
+        <img src="5.jpeg" alt="Joe y Elisa" class="foto-entrada-celular">
+    </section>
+
+    <section class="foto-inicio">
+        <img src="2.jpeg" alt="Joe y Elisa" class="foto-entrada-celular">
+    </section>
+
+    <div class="creditos" style="text-align: center; padding: 20px; color: #888;">
+
+        <a href="https://wa.me/593960934663" target="_blank"
+            style="color: #000000; text-decoration: none; font-weight: bold;">
+            Realizado por Invitaciones Digitales Loja / 0960934663
+        </a>
+
+    </div>
+
+
+
+    <script>
+
+
+        /* =====================================================
+           PRELOADER / ABRIR INVITACIÓN
+        ===================================================== */
+
+        const preloader = document.getElementById("preloader");
+
+        preloader.addEventListener("click", function () {
+
+            /* Ocultar portada */
+            preloader.classList.add("hide");
+
+            /* Ir al inicio */
+            window.scrollTo({
+                top: 0,
+                behavior: "instant"
+            });
+
+            /*
+               Intentar iniciar la música al hacer clic
+               en "Abrir Invitación".
+            */
+            const audio = document.getElementById("musicaBoda");
+            const playIcon = document.querySelector("#playMusic .play-icon");
+
+            if (audio) {
+
+                audio.play()
+                    .then(function () {
+
+                        if (playIcon) {
+                            playIcon.classList.add("pause");
+                        }
+
+                    })
+                    .catch(function (error) {
+
+                        console.log("El navegador bloqueó la reproducción:", error);
+
+                    });
+
+            }
+
+        }, { once: true });
+
+
+
+        /* =====================================================
+           REPRODUCTOR DE MÚSICA
+        ===================================================== */
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const audio = document.getElementById("musicaBoda");
+
+            const playButton =
+                document.getElementById("playMusic");
+
+            const playIcon =
+                playButton.querySelector(".play-icon");
+
+            const progressContainer =
+                document.getElementById("progressContainer");
+
+            const progress =
+                document.getElementById("musicProgress");
+
+            const dot =
+                document.getElementById("musicDot");
+
+            const prevButton =
+                document.getElementById("prevMusic");
+
+            const nextButton =
+                document.getElementById("nextMusic");
+
+
+            /* ================================================
+               PLAY / PAUSE
+            ================================================ */
+
+            playButton.addEventListener("click", function (e) {
+
+                e.stopPropagation();
+
+                if (audio.paused) {
+
+                    audio.play()
+                        .then(function () {
+
+                            playIcon.classList.add("pause");
+
+                        })
+                        .catch(function (error) {
+
+                            console.log(
+                                "No se pudo reproducir la música:",
+                                error
+                            );
+
+                        });
+
+                } else {
+
+                    audio.pause();
+
+                    playIcon.classList.remove("pause");
+
+                }
+
+            });
+
+
+            /* ================================================
+               ACTUALIZAR BARRA DE PROGRESO
+            ================================================ */
+
+            audio.addEventListener("timeupdate", function () {
+
+                if (!audio.duration || isNaN(audio.duration)) {
+                    return;
+                }
+
+                const porcentaje =
+                    (audio.currentTime / audio.duration) * 100;
+
+                progress.style.width =
+                    porcentaje + "%";
+
+                dot.style.left =
+                    porcentaje + "%";
+
+            });
+
+
+            /* ================================================
+               CLIC EN LA BARRA
+            ================================================ */
+
+            progressContainer.addEventListener("click", function (e) {
+
+                e.stopPropagation();
+
+                if (!audio.duration) {
+                    return;
+                }
+
+                const rect =
+                    progressContainer.getBoundingClientRect();
+
+                const posicion =
+                    e.clientX - rect.left;
+
+                let porcentaje =
+                    posicion / rect.width;
+
+                /* Evita valores menores de 0 o mayores de 100 */
+                porcentaje =
+                    Math.max(0, Math.min(1, porcentaje));
+
+                audio.currentTime =
+                    porcentaje * audio.duration;
+
+            });
+
+
+            /* ================================================
+               BOTÓN ANTERIOR
+            ================================================ */
+
+            prevButton.addEventListener("click", function (e) {
+
+                e.stopPropagation();
+
+                audio.currentTime = 0;
+
+                audio.play()
+                    .then(function () {
+
+                        playIcon.classList.add("pause");
+
+                    })
+                    .catch(function () {
+
+                        console.log("No se pudo reproducir.");
+
+                    });
+
+            });
+
+
+            /* ================================================
+               BOTÓN SIGUIENTE
+            ================================================ */
+
+            nextButton.addEventListener("click", function (e) {
+
+                e.stopPropagation();
+
+                audio.currentTime = 0;
+
+                audio.play()
+                    .then(function () {
+
+                        playIcon.classList.add("pause");
+
+                    })
+                    .catch(function () {
+
+                        console.log("No se pudo reproducir.");
+
+                    });
+
+            });
+
+
+            /* ================================================
+               CUANDO TERMINA LA CANCIÓN
+            ================================================ */
+
+            audio.addEventListener("ended", function () {
+
+                playIcon.classList.remove("pause");
+
+                progress.style.width = "0%";
+
+                dot.style.left = "0%";
+
+                audio.currentTime = 0;
+
+            });
+
+        });
+
+
+
+        /* =====================================================
+           RECARGA DE IMÁGENES PNG
+        ===================================================== */
+
+        window.addEventListener("load", function () {
+
+            const images =
+                document.querySelectorAll("img");
+
+            images.forEach(function (img) {
+
+                const src = img.getAttribute("src");
+
+                if (
+                    src &&
+                    src.toLowerCase().endsWith(".png") &&
+                    !src.includes("?v=")
+                ) {
+
+                    img.src =
+                        src + "?v=" + new Date().getTime();
+
+                }
+
+            });
+
+        });
+
+
+
+        /* =====================================================
+           CONTADOR
+        ===================================================== */
+
+        const weddingDate =
+            new Date("September 12, 2026 15:00:00").getTime();
+
+
+        function updateCountdown() {
+
+            const now =
+                new Date().getTime();
+
+            const distance =
+                weddingDate - now;
+
+
+            if (distance <= 0) {
+
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+
+                return;
+
+            }
+
+
+            const d =
+                Math.floor(
+                    distance /
+                    (1000 * 60 * 60 * 24)
+                );
+
+            const h =
+                Math.floor(
+                    (distance %
+                        (1000 * 60 * 60 * 24)) /
+                    (1000 * 60 * 60)
+                );
+
+            const m =
+                Math.floor(
+                    (distance %
+                        (1000 * 60 * 60)) /
+                    (1000 * 60)
+                );
+
+            const s =
+                Math.floor(
+                    (distance %
+                        (1000 * 60)) /
+                    1000
+                );
+
+
+            document.getElementById("days").innerText =
+                d < 10 ? "0" + d : d;
+
+            document.getElementById("hours").innerText =
+                h < 10 ? "0" + h : h;
+
+            document.getElementById("minutes").innerText =
+                m < 10 ? "0" + m : m;
+
+            document.getElementById("seconds").innerText =
+                s < 10 ? "0" + s : s;
+
+        }
+
+
+        updateCountdown();
+
+        setInterval(updateCountdown, 1000);
+
+
+
+        /* =====================================================
+           ANIMACIONES AL HACER SCROLL
+        ===================================================== */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+
+        function revealOnScroll() {
+
+            revealElements.forEach(function (el) {
+
+                const windowHeight =
+                    window.innerHeight;
+
+                const elementTop =
+                    el.getBoundingClientRect().top;
+
+
+                if (elementTop <
+                    windowHeight - 100) {
+
+                    el.classList.add("active");
+
+                }
+
+            });
+
+        }
+
+
+        window.addEventListener(
+            "scroll",
+            revealOnScroll
+        );
+
+        revealOnScroll();
+
+
+
+        /* =====================================================
+           INVITADO Y NÚMERO DE PASES
+        ===================================================== */
+
+        const urlDatos =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const nombre =
+            urlDatos.get("invitado");
+
+        const cantidad =
+            urlDatos.get("pases");
+
+
+        if (nombre) {
+
+            const nombreInvitado =
+                document.getElementById(
+                    "nombre-invitado"
+                );
+
+            if (nombreInvitado) {
+
+                nombreInvitado.innerText =
+                    nombre;
+
+            }
+
+        }
+
+
+        if (cantidad) {
+
+            const numeroPases =
+                document.getElementById(
+                    "num-pases"
+                );
+
+            if (numeroPases) {
+
+                numeroPases.innerText =
+                    cantidad;
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           CARRUSEL
+        ===================================================== */
+
+        const wrapper =
+            document.querySelector(
+                ".carrusel-wrapper"
+            );
+
+        const track =
+            document.getElementById(
+                "carrusel-track"
+            );
+
+
+        if (wrapper && track) {
+
+            let posicionActual = 0;
+
+            const desplazarAncho = 295;
+
+            const tiempoAutoPlay = 2000;
+
+            let autoPlay;
+
+
+            let isDragging = false;
+
+            let startX = 0;
+
+            let currentTranslate = 0;
+
+            let prevTranslate = 0;
+
+
+            function obtenerMaxDesplazamiento() {
+
+                const contenedorAncho =
+                    track.parentElement
+                        .getBoundingClientRect()
+                        .width;
+
+                const trackAncho =
+                    track.scrollWidth;
+
+                return Math.max(
+                    0,
+                    trackAncho - contenedorAncho
+                );
+
+            }
+
+
+            function setTrackPosition(position) {
+
+                track.style.transform =
+                    `translateX(${position}px)`;
+
+            }
+
+
+            function moverCarruselSiguiente() {
+
+                const maxDesplazamiento =
+                    obtenerMaxDesplazamiento();
+
+
+                if (maxDesplazamiento <= 0) {
+                    return;
+                }
+
+
+                if (
+                    Math.abs(posicionActual) >=
+                    maxDesplazamiento
+                ) {
+
+                    posicionActual = 0;
+
+                } else {
+
+                    posicionActual -=
+                        desplazarAncho;
+
+
+                    if (
+                        Math.abs(posicionActual) >
+                        maxDesplazamiento
+                    ) {
+
+                        posicionActual =
+                            -maxDesplazamiento;
+
+                    }
+
+                }
+
+
+                prevTranslate =
+                    posicionActual;
+
+                setTrackPosition(
+                    posicionActual
+                );
+
+            }
+
+
+            function startAutoPlay() {
+
+                clearInterval(autoPlay);
+
+                autoPlay =
+                    setInterval(
+                        moverCarruselSiguiente,
+                        tiempoAutoPlay
+                    );
+
+            }
+
+
+            function stopAutoPlay() {
+
+                clearInterval(autoPlay);
+
+            }
+
+
+            function obtenerPosicionX(e) {
+
+                if (
+                    e.type.includes("mouse")
+                ) {
+
+                    return e.pageX;
+
+                }
+
+                return e.touches[0].clientX;
+
+            }
+
+
+            function startDrag(e) {
+
+                isDragging = true;
+
+                stopAutoPlay();
+
+                startX =
+                    obtenerPosicionX(e);
+
+                track.style.transition =
+                    "none";
+
+                wrapper.style.cursor =
+                    "grabbing";
+
+            }
+
+
+            function drag(e) {
+
+                if (!isDragging) {
+                    return;
+                }
+
+
+                const currentX =
+                    obtenerPosicionX(e);
+
+                const maxDesplazamiento =
+                    obtenerMaxDesplazamiento();
+
+
+                const diffX =
+                    currentX - startX;
+
+
+                currentTranslate =
+                    prevTranslate + diffX;
+
+
+                if (currentTranslate > 0) {
+
+                    currentTranslate *= 0.3;
+
+                }
+
+
+                if (
+                    currentTranslate <
+                    -maxDesplazamiento
+                ) {
+
+                    currentTranslate =
+                        -maxDesplazamiento +
+                        (
+                            currentTranslate +
+                            maxDesplazamiento
+                        ) * 0.3;
+
+                }
+
+
+                setTrackPosition(
+                    currentTranslate
+                );
+
+            }
+
+
+            function endDrag() {
+
+                if (!isDragging) {
+                    return;
+                }
+
+
+                isDragging = false;
+
+                wrapper.style.cursor =
+                    "grab";
+
+                track.style.transition =
+                    "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)";
+
+
+                const maxDesplazamiento =
+                    obtenerMaxDesplazamiento();
+
+
+                posicionActual =
+                    Math.round(
+                        currentTranslate /
+                        desplazarAncho
+                    ) *
+                    desplazarAncho;
+
+
+                if (posicionActual > 0) {
+                    posicionActual = 0;
+                }
+
+
+                if (
+                    posicionActual <
+                    -maxDesplazamiento
+                ) {
+
+                    posicionActual =
+                        -maxDesplazamiento;
+
+                }
+
+
+                prevTranslate =
+                    posicionActual;
+
+
+                setTrackPosition(
+                    posicionActual
+                );
+
+
+                startAutoPlay();
+
+            }
+
+
+            /* MÓVIL */
+
+            wrapper.addEventListener(
+                "touchstart",
+                startDrag,
+                { passive: true }
+            );
+
+            wrapper.addEventListener(
+                "touchmove",
+                drag,
+                { passive: true }
+            );
+
+            wrapper.addEventListener(
+                "touchend",
+                endDrag
+            );
+
+
+            /* PC */
+
+            wrapper.addEventListener(
+                "mousedown",
+                startDrag
+            );
+
+            wrapper.addEventListener(
+                "mousemove",
+                drag
+            );
+
+            wrapper.addEventListener(
+                "mouseup",
+                endDrag
+            );
+
+            wrapper.addEventListener(
+                "mouseleave",
+                endDrag
+            );
+
+
+            startAutoPlay();
+
+        }
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
