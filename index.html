@@ -3303,56 +3303,6 @@
 
 
 
-        /* =====================================================
-           INVITADO Y NÚMERO DE PASES
-        ===================================================== */
-
-        const urlDatos =
-            new URLSearchParams(
-                window.location.search
-            );
-
-
-        const nombre =
-            urlDatos.get("invitado");
-
-        const cantidad =
-            urlDatos.get("pases");
-
-
-        if (nombre) {
-
-            const nombreInvitado =
-                document.getElementById(
-                    "nombre-invitado"
-                );
-
-            if (nombreInvitado) {
-
-                nombreInvitado.innerText =
-                    nombre;
-
-            }
-
-        }
-
-
-        if (cantidad) {
-
-            const numeroPases =
-                document.getElementById(
-                    "num-pases"
-                );
-
-            if (numeroPases) {
-
-                numeroPases.innerText =
-                    cantidad;
-
-            }
-
-        }
-
 
 
         /* =====================================================
