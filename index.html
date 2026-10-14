@@ -2634,35 +2634,38 @@
   }
 </style>
 
+
 <script>
   (() => {
-    const parametros = new URLSearchParams(
-      window.location.search
-    );
+    const parametros = new URLSearchParams(window.location.search);
 
     const invitado = parametros.get("invitado");
-    const pases = Number(parametros.get("pases"));
+    const pases = parametros.get("pases");
 
-    const nombreElemento =
-      document.getElementById("nombre-invitado");
-
-    const pasesElemento =
-      document.getElementById("num-pases");
+    const nombreElemento = document.getElementById("nombre-invitado");
+    const pasesElemento = document.getElementById("num-pases");
 
     if (invitado && nombreElemento) {
-      nombreElemento.textContent = invitado;
+      nombreElemento.textContent = invitado
+        .replace(/\+/g, " ")
+        .replace(/%20/gi, " ")
+        .trim();
     }
 
-    if (
-      parametros.has("pases") &&
-      Number.isInteger(pases) &&
-      pases > 0 &&
-      pasesElemento
-    ) {
-      pasesElemento.textContent = pases;
+    if (pases !== null && pases.trim() !== "") {
+      const numeroPases = Number(pases);
+
+      if (
+        Number.isInteger(numeroPases) &&
+        numeroPases > 0 &&
+        pasesElemento
+      ) {
+        pasesElemento.textContent = numeroPases;
+      }
     }
   })();
 </script>
+
 
 
 <div class="capsula-tiempo" style="background-image: url('si.png');">
